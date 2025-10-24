@@ -1,31 +1,45 @@
-# NSSC-Data-Analysis-project
-**Project Overview: Data Analytics for High-Energy Jet Physics**
+# NSSC-Data-Analysis-project: Data Analytics for High-Energy Jet Physics ⚛️
 
-This project applies a hybrid machine learning pipeline to high-energy jet physics data for classification and anomaly detection. The workflow combines classical tabular analysis with deep learning on jet image representations to create an efficient and scalable analysis tool.
+## Project Overview
 
-**Objective:**
+[cite_start]This project implemented a **hybrid machine learning pipeline** to analyze high-energy jet physics data [cite: 2][cite_start], focusing on both jet classification and the detection of rare or unusual events[cite: 4, 8]. [cite_start]The workflow combines classical tabular analysis with deep learning on jet images to create an efficient and scalable analysis tool[cite: 9, 204].
 
-The primary objective of this project was to investigate classification and anomaly detection in high-energy jet physics data. This involved analyzing a dataset of engineered jet features and associated jet images to classify the jets and identify anomalous energy distributions
+---
 
+## Key Objective
 
-**Workflow**
+[cite_start]The primary goal was to investigate **$\underline{\text{classification}}$** and **$\underline{\text{anomaly detection}}$** in high-energy jet physics data[cite: 4]. [cite_start]This involved analyzing a dataset of **53 engineered jet features** and associated **$100 \times 100$ grayscale jet images** [cite: 5, 16, 17] [cite_start]to classify the jets and pinpoint anomalous energy distributions[cite: 4].
 
-**1.Exploratory Data Analysis & Preprocessing:** 
-The dataset, containing 53 engineered tabular jet features and $100 \times 100$ jet images, was analyzed. The data was found to be complete, but standardization was required due to significant differences in feature scales4.
+---
 
-**2.Dimensionality Reduction:**
-Principal Component Analysis (PCA) was applied to the tabular features to capture principal variance directions.
+## The Strategic Workflow: Four Key Steps
 
-Result: The first 10 principal components captured approximately 95% of the variance, which reduced noise and improved training efficiency without degrading model performance.
+### 1. Exploratory Data Analysis & Preprocessing
 
-**3.Jet Classification:**
-A Random Forest classifier was used for tabular prediction.
+* [cite_start]The dataset was found to be **complete with no missing values**[cite: 21].
+* [cite_start]**Standardization** was necessary because feature scales varied significantly due to differences in physical magnitude[cite: 22].
 
-Performance: The model achieved an Accuracy of 0.8055 and an ROC-AUC of 0.9542.
+### 2. $\underline{\text{Dimensionality Reduction (PCA)}}$
 
-**4.Anomaly Detection:**
-An **autoencoder-based system (a Convolutional Autoencoder)** was used for anomaly detection on the image data
+[cite_start]**Principal Component Analysis (PCA)** was applied to the tabular features to capture the principal variance directions[cite: 6, 24].
 
-Method: The autoencoder reconstructs jet images, and anomalies are identified if the reconstruction Mean Squared Error (MSE) is greater than the threshold $(\text{mean} + 2\sigma)$10101010.
+* [cite_start]**Result:** The **first 10 principal components** captured approximately **$\underline{\mathbf{95\% \text{ of the variance}}}$**[cite: 26, 115].
+* [cite_start]**Impact:** PCA reduced the risk of overfitting, provided noise suppression, and led to a **$\underline{\text{faster training speed}}$** (approx. 40% less training time) without sacrificing overall accuracy[cite: 7, 29, 31, 115].
 
-Interpretation: The autoencoder successfully identified deviations in jet morphology that may correspond to rare physics events, detector noise, or potential signatures beyond the Standard Model distributions.
+### 3. Jet Classification ($\underline{\text{Random Forest}}$)
+
+[cite_start]A **Random Forest classifier** was selected as the robust baseline due to its robustness to nonlinear feature interactions and low sensitivity to feature scaling[cite: 48, 49, 50].
+
+* **Performance Highlights:**
+    * [cite_start]Accuracy: **0.8055** [cite: 54]
+    * [cite_start]ROC-AUC: **$\underline{\mathbf{0.9542}}$** [cite: 58]
+
+### 4. $\underline{\text{Anomaly Detection}}$ ($\underline{\text{CNN Autoencoder}}$)
+
+[cite_start]A **Convolutional Autoencoder (CAE)** was used to reconstruct the jet images and identify anomalies based on the reconstruction error[cite: 79, 80].
+
+* [cite_start]**Method:** Anomalies are identified if the Reconstruction Mean Squared Error (MSE) is greater than the threshold: $\text{MSE} > (\text{mean} + 2\sigma)$[cite: 86].
+* [cite_start]**Interpretation:** The autoencoder successfully identified jets with **deviations in morphology**[cite: 8, 91]. These anomalies may indicate:
+    * [cite_start]**$\underline{\text{Rare high-energy collisions}}$** [cite: 92]
+    * [cite_start]Detector noise or instability [cite: 93]
+    * [cite_start]**$\underline{\text{Potential signatures beyond Standard Model distributions}}$** [cite: 94]
